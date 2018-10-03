@@ -27,10 +27,10 @@
             </p>
             <form action="process.php" method="post">
                 <ul class="choices">
-                    <li><input type="radio" name="choice" id="" value="1">PHP Hypertext preprocessor</li>
-                    <li><input type="radio" name="choice" id="" value="2">PHP Hypertext processor</li>
-                    <li><input type="radio" name="choice" id="" value="3">PHP Hypertext editor</li>
-                    <li><input type="radio" name="choice" id="" value="4">PHP Presonal  preprocessor</li>
+                    <li><input type="radio" name="choice" value="1">PHP Hypertext preprocessor</li>
+                    <li><input type="radio" name="choice" value="2">PHP Hypertext processor</li>
+                    <li><input type="radio" name="choice" value="3">PHP Hypertext editor</li>
+                    <li><input type="radio" name="choice" value="4">PHP Presonal  preprocessor</li>
                 </ul>
                 <input type="submit" value="Check Your answer">
 
