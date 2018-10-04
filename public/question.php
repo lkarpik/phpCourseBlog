@@ -1,4 +1,28 @@
 <?php
+    include 'db.php';
+    // Set question number
+    $number = mysqli_real_escape_string($mysqli, $_GET['n']);
+    
+    /*
+    * Get question
+    */
+    $query = "SELECT * FROM questions WHERE question_number = $number";
+    // Get result
+
+    $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+
+    $question = $result->fetch_assoc();
+    
+    /*
+    * Get answers
+    */
+    $query = "SELECT * FROM choices WHERE question_number = $number";
+    // Get result
+
+    $choices = $mysqli->query($query) or die($mysqli->error.__LINE__);
+
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +47,15 @@
                 Question 1 of 5
             </div>
             <p class="question">
-                What is PHP
+                <?= $question['text'] ?>
             </p>
             <form action="process.php" method="post">
                 <ul class="choices">
-                    <li><input type="radio" name="choice" value="1">PHP Hypertext preprocessor</li>
-                    <li><input type="radio" name="choice" value="2">PHP Hypertext processor</li>
-                    <li><input type="radio" name="choice" value="3">PHP Hypertext editor</li>
-                    <li><input type="radio" name="choice" value="4">PHP Presonal  preprocessor</li>
+                    <?php while ($row = $choices->fetch_assoc()) : ?>
+                    <li><input type="radio" name="choice" value="<?= $row['id'] ?>"><?= $row['text'] ?></li>
+                    <?php endwhile; ?>                   
                 </ul>
-                <input type="submit" value="Check Your answer">
+                <input type="submit" name="submit" value="Check Your answer">
 
             </form>
 
