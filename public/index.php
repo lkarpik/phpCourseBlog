@@ -1,10 +1,10 @@
 <?php
     include 'db.php';
-
+    session_start();
     // Total numer of questions
     $query = "SELECT * FROM questions";
     $results = $mysqli->query($query) or die($mysqli->error.__LINE__);
-    $total = $results->num_rows; 
+    $_SESSION['total'] = $results->num_rows; 
 
     mysqli_free_result($results);
     $mysqli->close();
@@ -32,9 +32,9 @@
             <p>This is multiple choice quizz to test knowledge of PHP</p>
         
             <ul>
-                <li>Number of question: <?= $total ?></li>
+                <li>Number of question: <?= $_SESSION['total'] ?></li>
                 <li>Type: multiple choice</li>
-                <li>Estimated tme: <?php echo($total*0.5); ?> minutes</li>
+                <li>Estimated tme: <?php echo($_SESSION['total']*0.5); ?> minutes</li>
             </ul>
             <a href="question.php?n=1">Start a quiz</a>
         </div>

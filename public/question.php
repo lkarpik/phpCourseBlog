@@ -1,5 +1,6 @@
 <?php
     include 'db.php';
+    session_start();
     // Set question number
     $number = mysqli_real_escape_string($mysqli, $_GET['n']);
     
@@ -44,7 +45,7 @@
     <main>
         <div class="container">
             <div class="current">
-                Question 1 of 5
+                Question <?= $number ?> of <?= $_SESSION['total'] ?>
             </div>
             <p class="question">
                 <?= $question['text'] ?>
@@ -56,7 +57,7 @@
                     <?php endwhile; ?>                   
                 </ul>
                 <input type="submit" name="submit" value="Check Your answer">
-
+                <input type="hidden" name="number" value="<?= $number ?>">
             </form>
 
 

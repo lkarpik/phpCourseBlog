@@ -1,4 +1,11 @@
 <?php
+    include 'db.php';
+
+    if (isset($_POST['submit'])) {
+        
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +27,7 @@
     <main>
         <div class="container">
             <h2>Add a question</h2>
-            <form action="admin.php" method="post">
+            <form action="add.php" method="post">
                 <p>
                     <label for="question_number">Question number:</label>
                     <input type="number" name="question_number">
