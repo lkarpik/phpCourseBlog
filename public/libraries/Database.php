@@ -36,18 +36,17 @@ class Database {
         
     }
     /*
-    *   Select method
+    *   Select
     */
     public function select($query) {
         $result = $this->link->query($query) or die('Select error :' 
         .$this->link->error.__LINE__);
-        if ($result->num_row > 0) {
+        if ($result->num_rows > 0) {
             return $result;
         } else {
             return false;
         }
     }
-
     /*
     *   Insert
     */
@@ -61,7 +60,9 @@ class Database {
             die('Insert error :'.$this->link->error.__LINE__);
         }
     }
-
+    /*
+    *   Update
+    */
     public function update($query) {
         $update_row = $this->link->query($query) or die('Update error :' 
         .$this->link->error.__LINE__);
@@ -72,7 +73,9 @@ class Database {
             die('Update error :'.$this->link->error.__LINE__);
         }
     }
-
+    /*
+    *   Delete
+    */
     public function delete($query) {
         $delete_row = $this->link->query($query) or die('Delete error :' 
         .$this->link->error.__LINE__);

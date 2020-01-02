@@ -1,28 +1,25 @@
 <?php include 'includes/header.php' ?>
-
+<?php
+    // Create a database instance (obcject)
+    $db = new Database();
+    // Get post ID  
+    $id = mysqli_real_escape_string($db->link, $_GET['id']);
+    // Create a query for posts
+    $query = "SELECT * from posts where id='$id'";
+    // Run query
+    $posts = $db->select($query)->fetch_assoc();
+    // Create a query for categories 
+    $query = "SELECT * from categories";
+    // Run query
+    $categories = $db->select($query);
+    
+?>
+<main role="main" class="container">
     <div class="row">
-    <div class="col-md-8 blog-main">
-        <div class="blog-post">
-            <h2 class="blog-post-title">Sample blog post</h2>
-            <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
-
-            <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
-            <hr>
-            <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-            
-            <ul>
-                <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                <li>Donec id elit non mi porta gravida at eget metus.</li>
-                <li>Nulla vitae elit libero, a pharetra augue.</li>
-            </ul>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-            <ol>
-                <li>Vestibulum id ligula porta felis euismod semper.</li>
-                <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-            </ol>
-            <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-            
-        </div><!-- /.blog-post -->
-
+        <div class="col-md-8 blog-main">
+            <div class="blog-post">
+                <h2 class="blog-post-title"><?=$posts['title']?></h2>
+                <p class="blog-post-meta"><?= formatDate($posts['date']); ?> by <a href="#"><?=$posts['author']?></a></p>
+                <?=($posts['body'])?>
+            </div><!-- /.blog-post -->
 <?php include 'includes/footer.php' ?>

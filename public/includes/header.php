@@ -1,3 +1,8 @@
+<?php
+include 'config/config.php';
+include 'libraries/Database.php';
+include 'helpers/format_helper.php';
+?>
 <!doctype html>
 <html lang="pl">
   <head>
@@ -34,7 +39,7 @@
       <div class="nav-scroller py-1 mb-2">
         <!-- <nav class="nav d-flex justify-content-between"> -->
         <nav class="nav d-flex justify-content-center">
-          <a class="nav-items nav-link p-2 active" href="index.php">Home</a>
+          <a class="nav-items nav-link p-2" href="index.php">Home</a>
           <a class="nav-items nav-link p-2" href="posts.php">All posts</a>
         </nav>
       </div>
@@ -46,4 +51,4 @@
           
         </div>
       </div>
-      <main role="main" class="container">
+      
